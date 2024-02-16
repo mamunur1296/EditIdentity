@@ -8,13 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-// ###############
+// ############### ########
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("dbcs"));
 });
-// ###############
+// ############### #########
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
