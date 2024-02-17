@@ -7,6 +7,7 @@ namespace Test.DataAccesLayer
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> option) : base(option) { }
-        public DbSet<Country> ? Countries { get; set; }    
+        public DbSet<Country> ? Countries { get; set; }
+        public DbSet<Catagory>? Catagorys { get; set; }
     }
 }

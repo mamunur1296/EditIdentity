@@ -12,10 +12,14 @@ namespace Test.DataAccesLayer.Infrastructure.Repository
         private readonly ApplicationDbContext _context;
 
         public ICountryRepository CountryRepo { get; private set; }
+
+        public ICatagoryRepository CatagoryRepo { get; private set; }
+
         public UnitOfWork(ApplicationDbContext context)
         {
             _context = context;
             CountryRepo = new CountryRepository(context);
+            CatagoryRepo = new CatagoryRepository(context);
         }
         public void Save()
         {

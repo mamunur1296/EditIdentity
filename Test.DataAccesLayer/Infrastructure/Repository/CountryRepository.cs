@@ -11,14 +11,22 @@ namespace Test.DataAccesLayer.Infrastructure.Repository
     public class CountryRepository : Repository<Country>, ICountryRepository
     {
         private readonly ApplicationDbContext _context;
-        public CountryRepository(ApplicationDbContext country) : base(country)
+        public CountryRepository(ApplicationDbContext Country) : base(Country)
         {
-            _context = country;
+            _context = Country;
         }
 
         public void Update(Country country)
         {
-            _context.Countries.Update(country);
+            var countryData = _context?.Countries?.FirstOrDefault(x=>x.id == country.id);
+            if (countryData != null)
+            {
+                countryData.name = country.name;
+                countryData.description = country.description;
+                countryData.language = country.language;
+            }
+           // _context.Countries.Update(country);
         }
+
     }
 }
