@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Test.DataAccesLayer;
 using Test.DataAccesLayer.Infrastructure.IRepository;
 using Test.DataAccesLayer.Infrastructure.Repository;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("dbcs"));
 });
+
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 // ############### #########
 var app = builder.Build();
 
@@ -31,9 +35,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
-
+app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
     pattern: "{area=Customar}/{controller=Home}/{action=Index}/{id?}");

@@ -10,6 +10,7 @@ namespace Test.DataAccesLayer.Infrastructure.IRepository
     {
         ICountryRepository CountryRepo { get; }
         ICatagoryRepository CatagoryRepo { get; }
+        IProductRepository ProductRepo { get; }
         void Save();
     }
 }
