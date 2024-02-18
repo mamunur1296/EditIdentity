@@ -10,9 +10,10 @@ namespace Test.Model
 {
     public class ApplicationUser : IdentityUser
     {
-        [Required]
-        public string ? User { get; set; }
+        public string? FName { get; set; }
+        public string? LName { get; set; }
         public string? Address { get; set; }
+        public string? PhoneNo { get; set; }
         public string? City { get; set; }
         public string? State { get; set; }
         public string? PinCode { get; set; }

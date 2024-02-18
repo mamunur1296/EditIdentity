@@ -4,6 +4,9 @@ using Test.DataAccesLayer;
 using Test.DataAccesLayer.Infrastructure.IRepository;
 using Test.DataAccesLayer.Infrastructure.Repository;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using CommonHelper;
+using Test.Model;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,8 +19,14 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
     option.UseSqlServer(builder.Configuration.GetConnectionString("dbcs"));
 });
 
-builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddDefaultTokenProviders()
+//builder.Services.AddDefaultIdentity<IdentityUser>()
+//    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+    
+builder.Services.AddSingleton<IEmailSender,EmailSender>();
+builder.Services.AddRazorPages();
 // ############### #########
 var app = builder.Build();
 

@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CommonHelper\CommonHelper.csproj" />
     <ProjectReference Include="..\Test.DataAccesLayer\Test.DataAccesLayer.csproj" />
   </ItemGroup>
 
